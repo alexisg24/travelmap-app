@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  name     String
+  lastname String
+  password String
+  username String  @unique
+  Route    Route[]
+  Place    Place[]
+}
+
+model Waypoint {
+  id     Int     @id @default(autoincrement())
+  cords  String
+  Route1 Route[] @relation(name: "waypoint1")
+  Route2 Route[] @relation(name: "waypoint2")
+  Place  Place[]
+}
+
+model Route {
+  id           Int      @id @default(autoincrement())
+  user         User     @relation(fields: [user_id], references: [id])
+  user_id      Int
+  waypoint1    Waypoint @relation(fields: [waypoint1_id], references: [id], name: "waypoint1")
+  waypoint1_id Int
+  waypoint2    Waypoint @relation(fields: [waypoint2_id], references: [id], name: "waypoint2")
+  waypoint2_id Int
+}
+
+model Place {
+  id          Int      @id @default(autoincrement())
+  user        User     @relation(fields: [user_id], references: [id])
+  user_id     Int
+  waypoint    Waypoint @relation(fields: [waypoint_id], references: [id])
+  waypoint_id Int
+}
