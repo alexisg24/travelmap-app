@@ -45,4 +45,6 @@ model Place {
   user_id     Int
   waypoint    Waypoint @relation(fields: [waypoint_id], references: [id])
   waypoint_id Int
+  title       String
+  comment     String
 }

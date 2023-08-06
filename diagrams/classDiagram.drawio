@@ -58,9 +58,9 @@
                 <mxCell id="27" value="waypoint2_id: INT FK(#&lt;span style=&quot;border-color: var(--border-color); text-align: center;&quot;&gt;Waypoint&lt;/span&gt;: {id})" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="23" vertex="1">
                     <mxGeometry y="120" width="270" height="30" as="geometry"/>
                 </mxCell>
-                <object label="#Places" hedietLinkedDataV1_path="../../prisma/schema.prisma" hedietLinkedDataV1_start_col_x-num="0" hedietLinkedDataV1_start_line_x-num="41" hedietLinkedDataV1_end_col_x-num="1" hedietLinkedDataV1_end_line_x-num="47" id="36">
+                <object label="#Places" hedietLinkedDataV1_path="../../prisma/schema.prisma" hedietLinkedDataV1_start_col_x-num="0" hedietLinkedDataV1_start_line_x-num="41" hedietLinkedDataV1_end_col_x-num="1" hedietLinkedDataV1_end_line_x-num="49" id="36">
                     <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                        <mxGeometry x="700" y="450" width="270" height="120" as="geometry"/>
+                        <mxGeometry x="700" y="450" width="270" height="180" as="geometry"/>
                     </mxCell>
                 </object>
                 <mxCell id="37" value="id: INT UNIQUE AUTOINCREMENT PK" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="36" vertex="1">
@@ -71,6 +71,12 @@
                 </mxCell>
                 <mxCell id="39" value="waypoint_id: INT FK(#&lt;span style=&quot;text-align: center;&quot;&gt;Waypoint&lt;/span&gt;: {id})" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="36" vertex="1">
                     <mxGeometry y="90" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="title: STRING" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="36">
+                    <mxGeometry y="120" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="comment: STRING" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="36">
+                    <mxGeometry y="150" width="270" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="41" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=box;startFill=0;endArrow=box;endFill=0;" parent="1" source="17" target="26" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
