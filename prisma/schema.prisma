@@ -11,22 +11,25 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
+  id       Int        @id @default(autoincrement())
+  email    String     @unique
   name     String
   lastname String
   password String
-  username String  @unique
+  username String     @unique
   Route    Route[]
   Place    Place[]
+  Waypoint Waypoint[]
 }
 
 model Waypoint {
-  id     Int     @id @default(autoincrement())
-  cords  String
-  Route1 Route[] @relation(name: "waypoint1")
-  Route2 Route[] @relation(name: "waypoint2")
-  Place  Place[]
+  id      Int     @id @default(autoincrement())
+  user    User    @relation(fields: [user_id], references: [id])
+  user_id Int
+  cords   String
+  Route1  Route[] @relation(name: "waypoint1")
+  Route2  Route[] @relation(name: "waypoint2")
+  Place   Place[]
 }
 
 model Route {

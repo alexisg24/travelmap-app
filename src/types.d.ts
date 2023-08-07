@@ -16,3 +16,8 @@ declare global {
     }
   }
 }
+
+export interface WaypointPayload {
+  lat: string
+  lng: string
+}
