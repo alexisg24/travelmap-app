@@ -24,10 +24,10 @@ services:
     ports:
       - "5050:80"
 
-  redis:
-    image: redis
-    ports:
-      - "6379:6379"
-    volumes:
-      - ./docker-data:/var/lib/redis
-    restart: always
+  # redis:
+  #   image: redis
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - ./docker-data:/var/lib/redis
+  #   restart: always
