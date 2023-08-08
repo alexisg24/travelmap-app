@@ -14,8 +14,7 @@ export const placeSchema = object({
 
     comment: string({
       required_error: 'password is required'
-    }).min(6, { message: 'Must be 6 or more characters long' })
-      .max(32, { message: 'Must be 32 or fewer characters long' })
+    }).max(32, { message: 'Must be 32 or fewer characters long' })
       .optional(),
 
     cords: object({
