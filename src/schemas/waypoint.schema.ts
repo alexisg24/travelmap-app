@@ -13,7 +13,7 @@ export const waypointSchema = object({
   })
 })
 
-export const deleteWaypointSchema = object({
+export const paramsWaypointSchema = object({
   params: object({
     waypointId: string({
       required_error: 'WaypointId is required',

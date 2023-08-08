@@ -1,8 +1,6 @@
 import { Request, Response } from 'express'
-import { PrismaClient } from '@prisma/client'
 import { serverErrorsHandler } from '../../middlewares'
-
-const prisma = new PrismaClient()
+import { prisma } from '../../db/prismaInstance'
 
 export const deleteWaypoint = async (req: Request, res: Response): Promise<Response> => {
   if (req.authUser == null) return res.status(400).json({ message: 'User not found' })
@@ -12,7 +10,7 @@ export const deleteWaypoint = async (req: Request, res: Response): Promise<Respo
     const deleteWaypoint = await prisma.waypoint.delete({
       where: {
         user_id: id,
-        id: Number(waypointId)
+        id: +waypointId
       }
     })
     return res.status(201).json({ ok: true, waypoint: deleteWaypoint })

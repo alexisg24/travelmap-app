@@ -21,3 +21,15 @@ export interface WaypointPayload {
   lat: string
   lng: string
 }
+
+export interface WaypointSchema {
+  id: number
+  user_id: number
+  cords: string
+}
+
+export interface PlaceRequestPayload {
+  title: string
+  comment?: string
+  cords: WaypointPayload
+}

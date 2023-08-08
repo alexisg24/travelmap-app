@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
 import { UserSchema } from '../types'
 import { serverErrorsHandler } from './serverErrorsHandler'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '../db/prismaInstance'
 
-const prisma = new PrismaClient()
 export const verifyIfUserExist = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   const { email } = req.body
   try {

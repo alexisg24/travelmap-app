@@ -1,8 +1,7 @@
-import { PrismaClient } from '@prisma/client'
 import { Request, Response } from 'express'
 import { encryptPassword } from '../../utils/encrypt'
 import { serverErrorsHandler } from '../../middlewares'
-const prisma = new PrismaClient()
+import { prisma } from '../../db/prismaInstance'
 
 export const registerUser = async (req: Request, res: Response): Promise<Response> => {
   if (req.checkUser !== null) return res.status(400).json({ message: 'Email already in use!' })
