@@ -12,7 +12,6 @@ export const deleteWaypointFn = async (userID: number, waypointId: number): Prom
     return deleteWaypoint
   } catch (error) {
     console.log(error)
-
     throw new Error('Error deleting waypoint')
   }
 }

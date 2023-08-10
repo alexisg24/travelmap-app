@@ -1,3 +1,4 @@
+import { mapRouteSchema } from './schemas/mapRoutes.schema'
 export interface UserSchema {
   id: number
   email: string
@@ -25,6 +26,12 @@ export interface PlaceRequestPayload {
   cords: WaypointPayload
 }
 
+export interface MapRoutesRequestPayload {
+  title: string
+  cords1: WaypointPayload
+  cords2: WaypointPayload
+}
+
 export interface Pagination {
   page: number
   limit: number
@@ -32,6 +39,13 @@ export interface Pagination {
 
 export interface GetPlacesArray {
   results: PlaceSchema[]
+  next?: Pagination
+  previous?: Pagination
+  maxPages: number
+}
+
+export interface GetMapRoutesArray {
+  results: mapRouteSchema[]
   next?: Pagination
   previous?: Pagination
   maxPages: number

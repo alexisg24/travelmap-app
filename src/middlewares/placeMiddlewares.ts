@@ -4,6 +4,7 @@ import { serverErrorsHandler } from './serverErrorsHandler'
 import { prisma } from '../db/prismaInstance'
 import { formatCords } from '../helpers/formatCords'
 
+// TODO: Prisma query optimization
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
 export const checkIfPlaceExists = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
   if (req.authUser == null) return res.status(400).json({ message: 'User not found' })
