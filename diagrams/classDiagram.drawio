@@ -1,10 +1,10 @@
 <mxfile host="65bd71144e">
     <diagram id="MJHLh8OFSroyM2_P6OE3" name="Page-1">
-        <mxGraphModel dx="1217" dy="448" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1217" dy="658" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <object label="#Users" hedietLinkedDataV1_path="../../prisma/schema.prisma" hedietLinkedDataV1_start_col_x-num="0" hedietLinkedDataV1_start_line_x-num="12" hedietLinkedDataV1_end_col_x-num="1" hedietLinkedDataV1_end_line_x-num="22" id="6">
+                <object label="#Users" hedietLinkedDataV1_path="../../prisma/schema.prisma" hedietLinkedDataV1_symbol="User" id="6">
                     <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;" parent="1" vertex="1">
                         <mxGeometry x="20" y="290" width="270" height="210" as="geometry"/>
                     </mxCell>
@@ -27,7 +27,7 @@
                 <mxCell id="15" value="username: STRING UNIQUE" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="6" vertex="1">
                     <mxGeometry y="180" width="270" height="30" as="geometry"/>
                 </mxCell>
-                <object label="#Waypoints" hedietLinkedDataV1_path="../../prisma/schema.prisma" hedietLinkedDataV1_start_col_x-num="0" hedietLinkedDataV1_start_line_x-num="23" hedietLinkedDataV1_end_col_x-num="1" hedietLinkedDataV1_end_line_x-num="29" id="16">
+                <object label="#Waypoints" hedietLinkedDataV1_path="../../prisma/schema.prisma" hedietLinkedDataV1_symbol="Waypoint" id="16">
                     <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                         <mxGeometry x="370" y="340" width="270" height="120" as="geometry"/>
                     </mxCell>
@@ -41,7 +41,7 @@
                 <mxCell id="19" value="cords: POINT(ln, lat)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="16" vertex="1">
                     <mxGeometry y="90" width="270" height="30" as="geometry"/>
                 </mxCell>
-                <object label="#Routes" hedietLinkedDataV1_path="../../prisma/schema.prisma" hedietLinkedDataV1_start_col_x-num="0" hedietLinkedDataV1_start_line_x-num="31" hedietLinkedDataV1_end_col_x-num="1" hedietLinkedDataV1_end_line_x-num="39" id="23">
+                <object label="#Routes" hedietLinkedDataV1_path="../../prisma/schema.prisma" hedietLinkedDataV1_symbol="Route" id="23">
                     <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                         <mxGeometry x="700" y="170" width="270" height="180" as="geometry"/>
                     </mxCell>
@@ -61,7 +61,7 @@
                 <mxCell id="56" value="user_id: INT FK(#Users: {id})" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="23">
                     <mxGeometry y="150" width="270" height="30" as="geometry"/>
                 </mxCell>
-                <object label="#Places" hedietLinkedDataV1_path="../../prisma/schema.prisma" hedietLinkedDataV1_start_col_x-num="0" hedietLinkedDataV1_start_line_x-num="41" hedietLinkedDataV1_end_col_x-num="1" hedietLinkedDataV1_end_line_x-num="49" id="36">
+                <object label="#Places" hedietLinkedDataV1_path="../../prisma/schema.prisma" hedietLinkedDataV1_symbol="Place" id="36">
                     <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                         <mxGeometry x="700" y="450" width="270" height="180" as="geometry"/>
                     </mxCell>
