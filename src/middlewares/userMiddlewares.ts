@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import { UserSchema } from '../types'
 import { serverErrorsHandler } from './serverErrorsHandler'
 import { prisma } from '../db/prismaInstance'
+import { errorJson } from '../helpers/errorJson'
 
 export const verifyIfUserExist = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   const { email } = req.body
@@ -20,7 +21,7 @@ export const verifyIfUsernameExist = async (req: Request, res: Response, next: N
   const { username } = req.body
   try {
     const findUser: (UserSchema | null) = await prisma.user.findUnique({ where: { username } })
-    if (findUser != null) return res.status(400).json({ message: 'Username already taken' })
+    if (findUser != null) return res.status(400).json(errorJson('username is already taken'))
   } catch (error) {
     serverErrorsHandler(error, req, res)
   }

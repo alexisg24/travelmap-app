@@ -3,9 +3,10 @@ import { MapRoutesRequestPayload } from '../../types'
 import { serverErrorsHandler } from '../../middlewares'
 import { createWaypointFn } from '../../utils'
 import { prisma } from '../../db/prismaInstance'
+import { errorJson } from '../../helpers/errorJson'
 
 export const createMapRoutes = async (req: Request, res: Response): Promise<Response> => {
-  if (req.authUser == null) return res.status(400).json({ message: 'User not found' })
+  if (req.authUser == null) return res.status(400).json(errorJson('User not found'))
   const { id } = req.authUser
   const { title, cords1, cords2 } = (req.body as MapRoutesRequestPayload)
   try {
@@ -24,7 +25,7 @@ export const createMapRoutes = async (req: Request, res: Response): Promise<Resp
       }
     })
 
-    return res.status(201).json({ ok: true, mapRoute })
+    return res.status(201).json({ ok: true, route: mapRoute })
   } catch (error) {
     return serverErrorsHandler(error, req, res)
   }

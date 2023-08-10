@@ -3,9 +3,10 @@ import { PlaceRequestPayload } from '../../types'
 import { serverErrorsHandler } from '../../middlewares'
 import { prisma } from '../../db/prismaInstance'
 import { createWaypointFn } from '../../utils/createWaypointFn'
+import { errorJson } from '../../helpers/errorJson'
 
 export const createPlace = async (req: Request, res: Response): Promise<Response> => {
-  if (req.authUser == null) return res.status(400).json({ message: 'User not found' })
+  if (req.authUser == null) return res.status(400).json(errorJson('User not found'))
   const { id } = req.authUser
   const { title, comment, cords } = (req.body as PlaceRequestPayload)
   try {
@@ -18,7 +19,7 @@ export const createPlace = async (req: Request, res: Response): Promise<Response
         user_id: id
       }
     })
-    return res.status(201).json(newPlace)
+    return res.status(201).json({ ok: true, place: newPlace })
   } catch (error) {
     return serverErrorsHandler(error, req, res)
   }

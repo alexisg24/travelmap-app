@@ -4,9 +4,10 @@ import { MapRoutesRequestPayload } from '../types'
 import { formatCords } from '../helpers/formatCords'
 import { prisma } from '../db/prismaInstance'
 import { serverErrorsHandler } from './serverErrorsHandler'
+import { errorJson } from '../helpers/errorJson'
 
 export const checkIfRouteExists = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
-  if (req.authUser == null) return res.status(400).json({ message: 'User not found' })
+  if (req.authUser == null) return res.status(400).json(errorJson('User not found'))
   const { id } = req.authUser
   const { cords1, cords2 } = (req.body as MapRoutesRequestPayload)
   try {
@@ -39,19 +40,19 @@ export const checkIfRouteExists = async (req: Request, res: Response, next: Next
       }
     })
     if (findRoute == null) return next()
-    return res.status(400).json({ ok: false, message: 'Route is already registered' })
+    return res.status(400).json(errorJson('Route is already registered'))
   } catch (error) {
     serverErrorsHandler(error, req, res)
   }
 }
 
 export const checkIfRouteNotExists = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
-  if (req.authUser == null) return res.status(400).json({ message: 'User not found' })
+  if (req.authUser == null) return res.status(400).json(errorJson('User not found'))
   const { id } = req.authUser
   const { mapRouteID } = req.params
   try {
     const findRoute = await prisma.route.findFirst({ where: { user_id: id, id: +mapRouteID } })
-    if (findRoute == null) return res.status(404).json({ ok: false, message: 'Route not found' })
+    if (findRoute == null) return res.status(404).json(errorJson('Route not found'))
     return next()
   } catch (error) {
     serverErrorsHandler(error, req, res)

@@ -3,9 +3,10 @@ import { serverErrorsHandler } from '../../middlewares'
 import { prisma } from '../../db/prismaInstance'
 import { GetPlacesArray } from '../../types'
 import { paginateInfo } from '../../helpers/paginateInfo'
+import { errorJson } from '../../helpers/errorJson'
 
 export const getUserPlaces = async (req: Request, res: Response): Promise<Response> => {
-  if (req.authUser == null) return res.status(400).json({ message: 'User not found' })
+  if (req.authUser == null) return res.status(400).json(errorJson('User not found'))
   const { id } = req.authUser
   try {
     if (res.paginatedValues == null) throw new Error('Paginated values not found')
