@@ -12,13 +12,18 @@ export const checkIfPlaceExists = async (req: Request, res: Response, next: Next
   const { cords } = (req.body as PlaceRequestPayload)
   try {
     const formattedCords = formatCords(cords.lat, cords.lng)
-    const findWaypoint = await prisma.waypoint.findFirst({ where: { cords: formattedCords, user_id: +id } })
-    if (findWaypoint == null) return next()
 
-    const findPlace = await prisma.place.findFirst({ where: { user_id: id, waypoint_id: findWaypoint.id } })
+    const findPlace = await prisma.place.findFirst({
+      include: {
+        waypoint: { select: { cords: true } }
+      },
+      where: {
+        user_id: id, waypoint: { cords: formattedCords }
+      }
+    })
+
     if (findPlace == null) return next()
-
-    return res.status(401).json({ ok: false, message: 'Place is already registered' })
+    return res.status(400).json({ ok: false, message: 'Place is already registered' })
   } catch (error) {
     serverErrorsHandler(error, req, res)
   }

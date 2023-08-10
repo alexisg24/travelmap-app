@@ -10,15 +10,7 @@ export const updatePlace = async (req: Request, res: Response): Promise<Response
   const { placeId } = req.params
   const { title, comment, cords } = (req.body as PlaceRequestPayload)
   try {
-    const updatePlace = await prisma.place.update({
-      data: {
-        title,
-        comment
-      },
-      where: {
-        id: +placeId
-      }
-    })
+    const updatePlace = await prisma.place.update({ data: { title, comment }, where: { id: +placeId } })
 
     await updateWaypointFn(id, updatePlace.waypoint_id, cords.lat, cords.lng)
     return res.status(201).json({ ok: true, place: updatePlace })

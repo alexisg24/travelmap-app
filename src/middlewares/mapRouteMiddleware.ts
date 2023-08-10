@@ -11,7 +11,6 @@ export const checkIfRouteExists = async (req: Request, res: Response, next: Next
   const { cords1, cords2 } = (req.body as MapRoutesRequestPayload)
   try {
     const [formattedCords1, formattedCords2] = [formatCords(cords1.lat, cords1.lng), formatCords(cords2.lat, cords2.lng)]
-
     const findRoute = await prisma.route.findFirst({
       include: {
         waypoint1: {
@@ -40,7 +39,7 @@ export const checkIfRouteExists = async (req: Request, res: Response, next: Next
       }
     })
     if (findRoute == null) return next()
-    return res.status(401).json({ ok: false, message: 'Route is already registered' })
+    return res.status(400).json({ ok: false, message: 'Route is already registered' })
   } catch (error) {
     serverErrorsHandler(error, req, res)
   }
