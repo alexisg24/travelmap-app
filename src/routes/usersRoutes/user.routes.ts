@@ -39,10 +39,7 @@ export { userRouter }
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorSchema'
- */
-
-/**
- * @openapi
+ *
  * /api/v1/users/login:
  *   post:
  *     tags:
@@ -67,10 +64,7 @@ export { userRouter }
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorSchema'
- */
-
-/**
- * @openapi
+ *
  * /api/v1/users/refresh:
  *   get:
  *     tags:

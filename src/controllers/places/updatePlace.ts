@@ -12,9 +12,21 @@ export const updatePlace = async (req: Request, res: Response): Promise<Response
   const { title, comment, cords } = (req.body as PlaceRequestPayload)
   try {
     const updatePlace = await prisma.place.update({ data: { title, comment }, where: { id: +placeId } })
-
     await updateWaypointFn(id, updatePlace.waypoint_id, cords.lat, cords.lng)
-    return res.status(201).json({ ok: true, place: updatePlace })
+    const result = await prisma.place.findFirst({
+      select: {
+        id: true,
+        title: true,
+        comment: true,
+        waypoint: {
+          select: {
+            cords: true
+          }
+        }
+      },
+      where: { id: +placeId }
+    })
+    return res.status(201).json({ ok: true, place: result })
   } catch (error) {
     return serverErrorsHandler(error, req, res)
   }

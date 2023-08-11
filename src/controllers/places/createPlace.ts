@@ -12,6 +12,16 @@ export const createPlace = async (req: Request, res: Response): Promise<Response
   try {
     const createWaypoint = await createWaypointFn(id, cords.lat, cords.lng)
     const newPlace = await prisma.place.create({
+      select: {
+        id: true,
+        title: true,
+        comment: true,
+        waypoint: {
+          select: {
+            cords: true
+          }
+        }
+      },
       data: {
         title,
         comment: comment ?? '',

@@ -32,7 +32,7 @@ export { waypointsRouter }
  *     tags:
  *       - Waypoints
  *     description: Create a new Waypoint.
-*     parameters:
+ *     parameters:
  *     - name: x-access-token
  *       in: header
  *       description: User Auth Token
@@ -57,10 +57,7 @@ export { waypointsRouter }
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorSchema'
- */
-
-/**
- * @openapi
+ *
  * /api/v1/waypoints/{waypointId}:
  *   put:
  *     tags:
@@ -96,11 +93,6 @@ export { waypointsRouter }
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ErrorSchema'
- */
-
-/**
- * @openapi
- * /api/v1/waypoints/{waypointId}:
  *   delete:
  *     tags:
  *       - Waypoints
