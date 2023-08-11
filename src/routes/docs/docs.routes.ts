@@ -23,7 +23,6 @@ swaggerSpec.components = {
 }
 
 // setup our docs
-export const swaggerDocs = (app: Router, port: string | number): void => {
+export const swaggerDocs = (app: Router, _port: string | number): void => {
   app.use('/api/v1/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
-  console.log(`Version 1 Docs are running on port ${port}`)
 }

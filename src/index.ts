@@ -18,3 +18,5 @@ swaggerDocs(server, PORT)
 server.use('*', (_, res) => res.status(404).json(errorJson('Route not found')))
 
 server.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
+
+export default server
