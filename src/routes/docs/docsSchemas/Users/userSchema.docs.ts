@@ -9,6 +9,9 @@ export const User = {
     lastname: {
       type: 'string'
     },
+    username: {
+      type: 'string'
+    },
     email: {
       type: 'string'
     },

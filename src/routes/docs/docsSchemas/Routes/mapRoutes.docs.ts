@@ -1,12 +1,33 @@
 export const MapRouteSchema = {
   type: 'object',
-  required: ['lat', 'lng'],
+  required: ['title', 'cords1', 'cords2'],
   properties: {
-    lat: {
-      type: 'number'
+    title: {
+      type: 'string'
     },
-    lng: {
-      type: 'number'
+    cords1: {
+      type: 'object',
+      required: ['lat', 'lng'],
+      properties: {
+        lat: {
+          type: 'number'
+        },
+        lng: {
+          type: 'number'
+        }
+      }
+    },
+    cords2: {
+      type: 'object',
+      required: ['lat', 'lng'],
+      properties: {
+        lat: {
+          type: 'number'
+        },
+        lng: {
+          type: 'number'
+        }
+      }
     }
   }
 }

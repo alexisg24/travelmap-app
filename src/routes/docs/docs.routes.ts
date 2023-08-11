@@ -2,6 +2,7 @@ import { Router } from 'express'
 import swaggerJSDoc from 'swagger-jsdoc'
 import swaggerUI, { SwaggerOptions } from 'swagger-ui-express'
 import * as SchemaDocs from './docsSchemas/schemas.docs'
+import * as ResponseDocs from './docsSchemas/responses.docs'
 
 const options = {
   definition: {
@@ -18,19 +19,12 @@ const swaggerSpec: SwaggerOptions = swaggerJSDoc(options)
 
 // Mutate the swagger spec to include the schemas
 swaggerSpec.components = {
-  schemas: { ...SchemaDocs }
+  schemas: { ...SchemaDocs, ...ResponseDocs }
 }
-
-// swaggerSpec.paths = {
-//   'xd/xd': {
-//     get: {
-//       tags: ['Auth']
-//     }
-//   }
-// }
 
 // setup our docs
 export const swaggerDocs = (app: Router, port: string | number): void => {
   app.use('/api/v1/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
+  console.log(swaggerSpec.paths['/api/v1/users/login'].post.requestBody.content)
   console.log(`Version 1 Docs are running on port ${port}`)
 }

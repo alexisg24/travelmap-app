@@ -1,33 +1,12 @@
 export const WaypointSchema = {
   type: 'object',
-  required: ['title', 'cords1', 'cords2'],
+  required: ['lat', 'lng'],
   properties: {
-    title: {
-      type: 'string'
+    lat: {
+      type: 'number'
     },
-    cords1: {
-      type: 'object',
-      required: ['lat', 'lng'],
-      properties: {
-        lat: {
-          type: 'number'
-        },
-        lng: {
-          type: 'number'
-        }
-      }
-    },
-    cords2: {
-      type: 'object',
-      required: ['lat', 'lng'],
-      properties: {
-        lat: {
-          type: 'number'
-        },
-        lng: {
-          type: 'number'
-        }
-      }
+    lng: {
+      type: 'number'
     }
   }
 }
