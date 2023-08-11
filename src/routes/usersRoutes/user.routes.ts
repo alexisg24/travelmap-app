@@ -12,7 +12,6 @@ userRouter.post('/login', validateZod(loginSchema), verifyIfUserExist, loginUser
 userRouter.get('/refresh', validateJWTMiddleware, refreshToken)
 
 export { userRouter }
-
 /**
  * @openapi
  * /api/v1/users/login:
@@ -24,12 +23,7 @@ export { userRouter }
  *          content:
  *            application/json:
  *              schema:
- *               type: object
- *               properties:
- *                 email:
- *                   type: string
- *                 password:
- *                   type: string
+ *                $ref: '#/components/schemas/AuthenticationUser'
  *     responses:
  *       200:
  *         description: OK
@@ -44,47 +38,10 @@ export { userRouter }
  *                 accessToken:
  *                   type: string
  *                   example: "<KEY>"
- *       400:
+ *       400-500:
  *         description: FAILED
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 ok:
- *                   type: boolean
- *                   example: false
- *                 message:
- *                   type: array
- *                   items:
- *                    type: object
- *                    required:
- *                     - message
- *                    properties:
- *                      error:
- *                       type: string
- *                       example: "Error message"
- *                      path:
- *                       type: string
- *                       example: "Error path"
- *       500:
- *         description: FAILED
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 ok:
- *                   type: boolean
- *                   example: false
- *                 message:
- *                   type: array
- *                   items:
- *                    type: object
- *                    required:
- *                     - message
- *                    properties:
- *                      error:
- *                       type: string
- *                       example: "Error message"
+ *               $ref: '#/components/schemas/ErrorSchema'
  */

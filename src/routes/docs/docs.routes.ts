@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import swaggerJSDoc from 'swagger-jsdoc'
-import swaggerUI from 'swagger-ui-express'
+import swaggerUI, { SwaggerOptions } from 'swagger-ui-express'
+import * as SchemaDocs from './docsSchemas/schemas.docs'
 
 const options = {
   definition: {
@@ -10,10 +11,23 @@ const options = {
       version: '1.0.0'
     }
   },
-  apis: ['./src/routes/*/*.ts', './prisma/schema.prisma']
+  apis: ['./src/docs/*.ts', './src/routes/*/*.ts']
 }
 // Docs in json format
-const swaggerSpec = swaggerJSDoc(options)
+const swaggerSpec: SwaggerOptions = swaggerJSDoc(options)
+
+// Mutate the swagger spec to include the schemas
+swaggerSpec.components = {
+  schemas: { ...SchemaDocs }
+}
+
+// swaggerSpec.paths = {
+//   'xd/xd': {
+//     get: {
+//       tags: ['Auth']
+//     }
+//   }
+// }
 
 // setup our docs
 export const swaggerDocs = (app: Router, port: string | number): void => {
