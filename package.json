@@ -7,7 +7,7 @@
     "test": "test",
     "dev": "npx ts-node-dev src/index.ts",
     "build": "npx tsc",
-    "start": "node build/index.js"
+    "start": "node ./dist/index.js"
   },
   "keywords": [
     "Typescript",
