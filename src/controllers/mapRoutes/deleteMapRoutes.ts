@@ -9,10 +9,20 @@ export const deleteMapRoutes = async (req: Request, res: Response): Promise<Resp
   const { id } = req.authUser
   const { mapRouteID } = req.params
   try {
-    const deletedMapRoute = await prisma.route.delete({ where: { id: +mapRouteID, user_id: id } })
+    const { waypoint1_id: waypoint1, waypoint2_id: waypoint2, ...deletedMapRoute } = await prisma.route.delete({
+      select: {
+        id: true,
+        title: true,
+        waypoint1_id: true,
+        waypoint2_id: true,
+        waypoint1: { select: { cords: true } },
+        waypoint2: { select: { cords: true } }
+      },
+      where: { id: +mapRouteID, user_id: id }
+    })
     await Promise.all([
-      deleteWaypointFn(id, deletedMapRoute.waypoint1_id),
-      deleteWaypointFn(id, deletedMapRoute.waypoint2_id)
+      deleteWaypointFn(id, waypoint1),
+      deleteWaypointFn(id, waypoint2)
     ])
     return res.status(201).json({ ok: true, route: deletedMapRoute })
   } catch (error) {

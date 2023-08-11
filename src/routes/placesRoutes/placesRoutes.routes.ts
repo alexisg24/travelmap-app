@@ -37,7 +37,7 @@ export { placesRouter }
  *   get:
  *     tags:
  *       - Places
- *     description: Create a new place.
+ *     description: Get all user places.
  *     parameters:
  *     - name: x-access-token
  *       in: header
@@ -101,7 +101,7 @@ export { placesRouter }
  *   put:
  *     tags:
  *       - Places
- *     description: Edit and existing place.
+ *     description: Edit an existing place.
  *     parameters:
  *     - name: placeId
  *       in: path
@@ -135,7 +135,7 @@ export { placesRouter }
  *   delete:
  *     tags:
  *       - Places
- *     description: Edit and existing place.
+ *     description: Delete an existing place.
  *     parameters:
  *     - name: placeId
  *       in: path

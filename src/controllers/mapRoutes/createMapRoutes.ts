@@ -17,6 +17,12 @@ export const createMapRoutes = async (req: Request, res: Response): Promise<Resp
     ])
 
     const mapRoute = await prisma.route.create({
+      select: {
+        id: true,
+        title: true,
+        waypoint1: { select: { cords: true } },
+        waypoint2: { select: { cords: true } }
+      },
       data: {
         user_id: id,
         title,
