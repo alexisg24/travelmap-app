@@ -6,7 +6,7 @@ import { formatCords } from '../../src/helpers/formatCords'
 const BASE_URL = '/api/v1'
 
 describe('Tests in /waypoints', () => {
-  test('request should fail when user sent wrong body', async () => {
+  test('request should fail when user sent wrong body or headers', async () => {
     const response = await request(server).post(`${BASE_URL}/waypoints`)
     expect(response.status).toBe(400)
     expect(JSON.parse(response.text)).toMatchObject({
