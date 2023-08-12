@@ -4,8 +4,8 @@
   "description": "Full Stack TravelMap App, builded with Node, Express, TypeScript, React, Docker and PostgreSQL",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
-    "test:watch": "jest --watch",
+    "test": "jest --coverage  --forceExit --detectOpenHandles --maxWorkers=1",
+    "test:watch": "jest --watchAll  --forceExit --detectOpenHandles --maxWorkers=1",
     "dev": "npx ts-node-dev src/index.ts",
     "build": "npx tsc",
     "start": "node ./dist/index.js"

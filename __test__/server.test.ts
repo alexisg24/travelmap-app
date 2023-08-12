@@ -1,6 +1,8 @@
 import request from 'supertest'
-import server from '../src/index'
+import server from '../src'
+
 const BASE_URL = '/api/v1'
+
 describe('Test on server', () => {
   test('should return 404 status code if the endpoint does not exist', async () => {
     const response = await request(server).get(`${BASE_URL}/testingendpoint`)
