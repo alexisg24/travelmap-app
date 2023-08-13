@@ -8,6 +8,8 @@
     "test:watch": "jest --watchAll  --forceExit --detectOpenHandles --maxWorkers=1",
     "dev": "npx ts-node-dev src/index.ts",
     "build": "npx tsc",
+    "migration:prod": "npx prisma generate",
+    "migration:deploy": "npm run migration:prod && npx prisma migrate deploy",
     "start": "node ./dist/index.js"
   },
   "keywords": [
