@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mapRoutes = void 0;
+const express_1 = require("express");
+const middlewares_1 = require("../../middlewares");
+const mapRoutes_1 = require("../../controllers/mapRoutes");
+const validateSchemas_1 = require("../../middlewares/validateSchemas");
+const schemas_1 = require("../../schemas");
+const mapRoutes = (0, express_1.Router)();
+exports.mapRoutes = mapRoutes;
+mapRoutes.post('/', (0, validateSchemas_1.validateZod)(schemas_1.mapRouteSchema), middlewares_1.validateJWTMiddleware, middlewares_1.checkIfRouteExists, mapRoutes_1.createMapRoutes);
+mapRoutes.put('/:mapRouteID', (0, validateSchemas_1.validateZod)(schemas_1.paramRoutesSchema), (0, validateSchemas_1.validateZod)(schemas_1.mapRouteSchema), middlewares_1.validateJWTMiddleware, middlewares_1.checkIfRouteNotExists, mapRoutes_1.updateMapRoutes);
+mapRoutes.delete('/:mapRouteID', (0, validateSchemas_1.validateZod)(schemas_1.paramRoutesSchema), middlewares_1.validateJWTMiddleware, middlewares_1.checkIfRouteNotExists, mapRoutes_1.deleteMapRoutes);
+mapRoutes.get('/', (0, validateSchemas_1.validateZod)(schemas_1.paginationSchema), middlewares_1.validateJWTMiddleware, middlewares_1.paginationMiddleware, mapRoutes_1.getUserMapRoutes);

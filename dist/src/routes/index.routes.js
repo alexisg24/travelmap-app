@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const user_routes_1 = require("./usersRoutes/user.routes");
+const placesRoutes_routes_1 = require("./placesRoutes/placesRoutes.routes");
+const mapRoutes_routes_1 = require("./mapRoutes/mapRoutes.routes");
+const waypoints_routes_1 = require("./waypointRoutes/waypoints.routes");
+const router = (0, express_1.Router)();
+exports.router = router;
+router.use('/users', user_routes_1.userRouter);
+router.use('/places', placesRoutes_routes_1.placesRouter);
+router.use('/maproutes', mapRoutes_routes_1.mapRoutes);
+router.use('/waypoints', waypoints_routes_1.waypointsRouter);

@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.placesRouter = void 0;
+const express_1 = require("express");
+const validateSchemas_1 = require("../../middlewares/validateSchemas");
+const schemas_1 = require("../../schemas");
+const places_1 = require("../../controllers/places");
+const middlewares_1 = require("../../middlewares");
+const placesRouter = (0, express_1.Router)();
+exports.placesRouter = placesRouter;
+placesRouter.post('/', (0, validateSchemas_1.validateZod)(schemas_1.placeSchema), middlewares_1.validateJWTMiddleware, middlewares_1.checkIfPlaceExists, places_1.createPlace);
+placesRouter.delete('/:placeId', (0, validateSchemas_1.validateZod)(schemas_1.paramPlaceSchema), middlewares_1.validateJWTMiddleware, middlewares_1.checkIfPlaceNotExist, places_1.deletePlace);
+placesRouter.put('/:placeId', (0, validateSchemas_1.validateZod)(schemas_1.paramPlaceSchema), (0, validateSchemas_1.validateZod)(schemas_1.placeSchema), middlewares_1.validateJWTMiddleware, middlewares_1.checkIfPlaceNotExist, places_1.updatePlace);
+placesRouter.get('/', (0, validateSchemas_1.validateZod)(schemas_1.paginationSchema), middlewares_1.validateJWTMiddleware, middlewares_1.paginationMiddleware, places_1.getUserPlaces);

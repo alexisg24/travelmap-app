@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.waypointsRouter = void 0;
+const express_1 = require("express");
+const middlewares_1 = require("../../middlewares");
+const waypoints_1 = require("../../controllers/waypoints");
+const validateSchemas_1 = require("../../middlewares/validateSchemas");
+const schemas_1 = require("../../schemas");
+const waypointMiddlewares_1 = require("../../middlewares/waypointMiddlewares");
+const waypointsRouter = (0, express_1.Router)();
+exports.waypointsRouter = waypointsRouter;
+waypointsRouter.post('/', (0, validateSchemas_1.validateZod)(schemas_1.waypointSchema), middlewares_1.validateJWTMiddleware, waypoints_1.createWaypoint);
+waypointsRouter.delete('/:waypointId', (0, validateSchemas_1.validateZod)(schemas_1.paramsWaypointSchema), middlewares_1.validateJWTMiddleware, waypointMiddlewares_1.checkIfWaypointNotExist, waypoints_1.deleteWaypoint);
+waypointsRouter.put('/:waypointId', (0, validateSchemas_1.validateZod)(schemas_1.paramsWaypointSchema), (0, validateSchemas_1.validateZod)(schemas_1.waypointSchema), middlewares_1.validateJWTMiddleware, waypointMiddlewares_1.checkIfWaypointNotExist, waypoints_1.updateWaypoint);
