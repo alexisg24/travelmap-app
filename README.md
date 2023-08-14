@@ -6,10 +6,10 @@ TravelMap is an educational app where you can save your routes, pin waypoints in
 
 This app has the following features, used for practice:
 
-- Login and Register (comming soon)
-- Create Waypoints (comming soon)
-- Add names and descriptions of this Waypoints (comming soon)
-- Create Routes between two Waypoints (comming soon)
+- Login and Register (coming soon)
+- Create Waypoints (coming soon)
+- Add names and descriptions of this Waypoints (coming soon)
+- Create Routes between two Waypoints (coming soon)
 
 ## Getting Started 🎈
 
