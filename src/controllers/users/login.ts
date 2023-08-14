@@ -14,7 +14,7 @@ export const loginUser = async (req: Request, res: Response): Promise<Response> 
     if (!validatePassword) return res.status(400).send(errorJson('Email or password are incorrect'))
 
     const userJWT = await generateJWT({ id, username })
-    return res.status(200).send({ ok: true, accessToken: userJWT })
+    return res.status(200).send({ ok: true, accessToken: userJWT, username })
   } catch (error) {
     return serverErrorsHandler(error, req, res)
   }

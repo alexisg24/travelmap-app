@@ -19,7 +19,8 @@ describe('Test in /register', () => {
     expect(response.status).toBe(201)
     expect(JSON.parse(response.text)).toEqual({
       ok: true,
-      accessToken: expect.any(String)
+      accessToken: expect.any(String),
+      username: expect.any(String)
     })
 
     await deleteUserFn(userData.username)

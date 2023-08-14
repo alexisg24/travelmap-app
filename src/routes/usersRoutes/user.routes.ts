@@ -82,7 +82,7 @@ export { userRouter }
  *         content:
  *           application/json:
  *             schema:
- *              $ref: '#/components/schemas/LoginResponse'
+ *              $ref: '#/components/schemas/TokenResponse'
  *       400-500:
  *         description: FAILED
  *         content:

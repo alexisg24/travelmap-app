@@ -14,7 +14,8 @@ describe('Test in /login', () => {
     expect(response.status).toBe(200)
     expect(JSON.parse(response.text)).toMatchObject({
       ok: true,
-      accessToken: expect.any(String)
+      accessToken: expect.any(String),
+      username: expect.any(String)
     })
   })
 

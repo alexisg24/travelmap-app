@@ -15,7 +15,7 @@ export const registerUser = async (req: Request, res: Response): Promise<Respons
       data: { name, lastname, username, email, password: newPassword }
     })
     const userJWT = await generateJWT({ id, username })
-    return res.status(201).json({ ok: true, accessToken: userJWT })
+    return res.status(201).json({ ok: true, accessToken: userJWT, username })
   } catch (error) {
     return serverErrorsHandler(error, req, res)
   }
